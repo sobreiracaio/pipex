@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: admin <admin@student.42.fr>                +#+  +:+       +#+         #
+#    By: crocha-s <crocha-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/08 11:07:37 by gcollet           #+#    #+#              #
-#    Updated: 2023/06/14 20:17:32 by admin            ###   ########.fr        #
+#    Updated: 2023/06/15 19:28:47 by crocha-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,8 @@ CFLAGS 	= -Wall -Wextra -Werror -g
 all: 		${PROG}
 
 ${PROG}:	${OBJS}
-					@make re -C ./libft
-					@$(CC) ${OBJS} -Llibft -lft -o ${PROG}
+					@make re -C ../ft_libft
+					@$(CC) ${OBJS} -Llibft -o ${PROG}
 					
 clean:
 					@make clean -C ./libft

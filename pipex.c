@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crocha-s <crocha-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:47:46 by crocha-s          #+#    #+#             */
-/*   Updated: 2023/06/14 18:28:25 by admin            ###   ########.fr       */
+/*   Updated: 2023/06/15 19:13:38 by crocha-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,28 @@
 
 void	child_process(char **argv, char **envp, int *fd)
 {
-	int file;
+	int filein;
 
-	file = open(argv[1], O_RDONLY, 0777);
-	if (file == -1)
+	filein = open(argv[1], O_RDONLY, 0777);
+	if (filein == -1)
 		error();
-	
+	dup2(fd[1], STDOUT_FILENO);
+	dup2(filein, STDIN_FILENO);
+	close(fd[0]);
+	execute(argv[2], envp);
+}
+
+void	parent_process (char **argv, char **envp, int *fd)
+{
+	int fileout;
+
+	fileout = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if (fileout == -1)
+		error();
+	dup2(fd[0], STDIN_FILENO);
+	dup2(fileout, STDOUT_FILENO);
+	close (fd[1]);
+	execute(argv[3],envp);
 }
 
 
