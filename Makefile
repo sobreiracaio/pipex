@@ -6,7 +6,7 @@
 #    By: crocha-s <crocha-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/08 11:07:37 by gcollet           #+#    #+#              #
-#    Updated: 2023/06/15 19:28:47 by crocha-s         ###   ########.fr        #
+#    Updated: 2023/06/19 17:14:18 by crocha-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,29 +17,32 @@ SRCS 	= pipex.c utils.c
 OBJS 	= ${SRCS:.c=.o}
 MAIN	= pipex.c
 
-HEADER	= -I .
+INCLUDE	= -I .
 
-CC 		= gcc
+CC 		= cc
+RM		= rm -f
 CFLAGS 	= -Wall -Wextra -Werror -g
+MAKE 	= make -C
+LIBFT_PATH = ../ft_libft
+LIBFT = -L ${LIBFT_PATH} -lft
 
 .c.o:		%.o : %.c
-					@gcc ${CFLAGS} ${HEADER} -c $< -o $(<:.c=.o)
-
-all: 		${PROG}
+					${CC} ${CFLAGS} ${INCLUDE} -c $< -o $(<:.c=.o)
 
 ${PROG}:	${OBJS}
-					@make re -C ../ft_libft
-					@$(CC) ${OBJS} -Llibft -o ${PROG}
+					${MAKE} ${LIBFT_PATH} all
+					${CC} ${OBJS} ${LIBFT} -o ${PROG}
+
+all: 		${PROG}
 					
 clean:
-					@make clean -C ./libft
-					@rm -f ${OBJS}
+					${MAKE} ${LIBFT_PATH} clean
+					${RM} ${OBJS}
 
 fclean: 	clean
-					@make fclean -C ./libft
-					@rm -f $(NAME)
-					@rm -f ${PROG}
+					${MAKE} ${LIBFT_PATH} fclean
+					${RM} ${PROG}
 					
 re:			fclean all
 
-.PHONY: all clean fclean re re_bonus bonus party
+.PHONY: all clean fclean re

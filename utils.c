@@ -6,7 +6,7 @@
 /*   By: crocha-s <crocha-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 17:30:59 by admin             #+#    #+#             */
-/*   Updated: 2023/06/15 19:17:28 by crocha-s         ###   ########.fr       */
+/*   Updated: 2023/06/19 18:34:46 by crocha-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char *find_path(char *cmd, char **envp)
     char *path;
     char *part_path;
     i = 0;
+    
     while (ft_strnstr(envp[i], "PATH", 4) == 0)
         i++;
     paths = ft_split(envp[i] + 5, ':');
@@ -63,7 +64,12 @@ void execute(char *argv, char **envp)
         error();
     }
     if(execve(path, cmd, envp) == -1)
+    {
+        //  while (cmd[i++])
+        //     free(cmd[i]);
+        // free (cmd);
         error();
-}
+    }
+}   
 
 

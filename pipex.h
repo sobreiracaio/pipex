@@ -6,7 +6,7 @@
 /*   By: crocha-s <crocha-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:49:39 by crocha-s          #+#    #+#             */
-/*   Updated: 2023/06/15 19:16:00 by crocha-s         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:28:16 by crocha-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 void    error(void);
 char *find_path(char *cmd, char **envp);
 void execute(char *argv, char **envp);
+void	child_process(char **argv, char **envp, int *fd);
+void	parent_process(char **argv, char **envp, int *fd);
 
 
 #endif
