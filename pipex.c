@@ -6,7 +6,7 @@
 /*   By: crocha-s <crocha-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:47:46 by crocha-s          #+#    #+#             */
-/*   Updated: 2023/06/15 19:13:38 by crocha-s         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:45:59 by crocha-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int main (int argc, char **argv, char **envp)
 		if(pid == 0)
 		{
 			child_process(argv, envp, fd);
+			waitpid(pid, NULL, 0);
+			parent_process(argv, envp, fd);
 		}
 		
 	}
