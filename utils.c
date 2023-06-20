@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 17:30:59 by admin             #+#    #+#             */
-/*   Updated: 2023/06/20 21:52:19 by admin            ###   ########.fr       */
+/*   Updated: 2023/06/20 22:32:23 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@ void error(void)
 {
     perror("Error");
     exit(EXIT_FAILURE);
+}
+
+void	custom_error(char *header, char *msg)
+{
+	ft_putstr_fd(header, 2);
+	ft_putstr_fd(": ", 2);
+	ft_putstr_fd(msg, 2);
+	ft_putstr_fd("\n", 2);
 }
 
 void free_split(char **str)
@@ -57,6 +65,7 @@ char *find_path(char *cmd, char **envp)
     }
      i = 0;
     free_split(envp_paths);
+    custom_error(cmd, "command not found");
     return (NULL);   
 }
 

@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:49:39 by crocha-s          #+#    #+#             */
-/*   Updated: 2023/06/20 21:52:31 by admin            ###   ########.fr       */
+/*   Updated: 2023/06/20 22:23:14 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	child_process(char **argv, char **envp, int *fd);
 void	parent_process(char **argv, char **envp, int *fd);
 void free_split(char **str);
 void check_envp(char **envp);
-
+void	custom_error(char *header, char *msg);
 
 #endif
 
