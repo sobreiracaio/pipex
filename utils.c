@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crocha-s <crocha-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 17:30:59 by admin             #+#    #+#             */
-/*   Updated: 2023/06/20 17:43:38 by crocha-s         ###   ########.fr       */
+/*   Updated: 2023/06/20 21:52:19 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void error(void)
+{
+    perror("Error");
+    exit(EXIT_FAILURE);
+}
+
+void free_split(char **str)
+{
+    int i;
+    
+    i = 0;
+    while (str[i])
+            free(str[i++]);
+    free (str);
+    
+}
 
 char *find_path(char *cmd, char **envp)
 {
@@ -43,22 +60,6 @@ char *find_path(char *cmd, char **envp)
     return (NULL);   
 }
 
-void error(void)
-{
-    perror("Error");
-    exit(EXIT_FAILURE);
-}
-
-void free_split(char **str)
-{
-    int i;
-    
-    i = 0;
-    while (str[i++])
-            free(str[i]);
-    free (str);
-    
-}
 
 void execute(char *argv, char **envp)
 {
