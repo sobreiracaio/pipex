@@ -6,11 +6,29 @@
 /*   By: crocha-s <crocha-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:47:46 by crocha-s          #+#    #+#             */
-/*   Updated: 2023/06/19 17:40:46 by crocha-s         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:06:47 by crocha-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void check_envp(char **envp)
+{
+	int i;
+	int check;
+
+	i = -1;
+	while (envp[++i])
+	{
+		if (ft_strnstr(envp[i], "PATH=", 5) && envp[i][6])
+		check = 1;
+	}
+	if(!check)
+	{
+		error();
+		exit(1);
+	}
+}
 
 void	child_process(char **argv, char **envp, int *fd)
 {
@@ -45,6 +63,7 @@ int main (int argc, char **argv, char **envp)
 	int fd[2];
 	pid_t pid;
 
+	check_envp(envp);
 	if (argc == 5)
 	{
 		if(pipe(fd) == -1)
@@ -63,6 +82,7 @@ int main (int argc, char **argv, char **envp)
 	{
 		ft_putstr_fd("Error: Bad arguments.\n", 2);
 		ft_putstr_fd("Ex: ./pipex <file1> <cmd1> <cmd2> <file2>\n",1);
+		exit(1);
 	}
 	return (0);
 }
