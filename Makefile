@@ -6,7 +6,7 @@
 #    By: crocha-s <crocha-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/08 11:07:37 by gcollet           #+#    #+#              #
-#    Updated: 2023/06/19 17:14:18 by crocha-s         ###   ########.fr        #
+#    Updated: 2023/06/22 19:00:26 by crocha-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ CC 		= cc
 RM		= rm -f
 CFLAGS 	= -Wall -Wextra -Werror -g
 MAKE 	= make -C
-LIBFT_PATH = ../ft_libft
+LIBFT_PATH = libft
 LIBFT = -L ${LIBFT_PATH} -lft
 
 .c.o:		%.o : %.c

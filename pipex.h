@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crocha-s <crocha-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:49:39 by crocha-s          #+#    #+#             */
-/*   Updated: 2023/06/22 17:01:35 by crocha-s         ###   ########.fr       */
+/*   Updated: 2023/06/22 19:00:32 by crocha-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <signal.h>
-# include "ft_libft/libft.h"
+# include "libft/libft.h"
 
 void	error(void);
 char	*find_path(char *cmd, char **envp);
