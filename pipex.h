@@ -21,7 +21,7 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <signal.h>
-# include "../ft_libft/libft.h"
+# include "ft_libft/libft.h"
 
 void	error(void);
 char	*find_path(char *cmd, char **envp);

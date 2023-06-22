@@ -6,7 +6,7 @@
 /*   By: crocha-s <crocha-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 17:30:59 by admin             #+#    #+#             */
-/*   Updated: 2023/06/22 17:19:22 by crocha-s         ###   ########.fr       */
+/*   Updated: 2023/06/22 17:28:36 by crocha-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ void	free_split(char **str)
 
 char	*find_path(char *cmd, char **envp)
 {
-	int	i;
-	char		**envp_paths;
-	char		*cmd_path;
-	char		*part_path;
+	int		i;
+	char	**envp_paths;
+	char	*cmd_path;
+	char	*part_path;
 
 	i = 0;
 	while (!ft_strnstr(envp[i], "PATH=", 5))
 		i++;
 	envp_paths = ft_split(envp[i] + 5, ':');
-	i = 0;
-	while (envp_paths[i])
+	i = -1;
+	while (envp_paths[++i])
 	{
 		part_path = ft_strjoin(envp_paths[i], "/");
 		cmd_path = ft_strjoin(part_path, cmd);
@@ -58,10 +58,8 @@ char	*find_path(char *cmd, char **envp)
 			free_split(envp_paths);
 			return (cmd_path);
 		}
-	    free (cmd_path);
-		i++;
+		free (cmd_path);
 	}
-	i = 0;
 	free_split(envp_paths);
 	custom_error(cmd, "command not found");
 	return (NULL);
